@@ -22,7 +22,7 @@ const Home = () => {
 
     axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/categories/`)
       .then(res => setCategories(res.data.data.categories))
-  }, [])
+  }, [dispatch])
 
   const searchProducts = () => {
     dispatch(filterProducts(search));

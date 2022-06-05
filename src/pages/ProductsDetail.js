@@ -26,7 +26,7 @@ const ProductsDetail = () => {
                 setProduct(productSearch);
                 dispatch(filterCategories(productSearch.category.id));
             })
-    }, []);
+    }, [dispatch, id]);
 
     console.log(product);
 
@@ -36,7 +36,7 @@ const ProductsDetail = () => {
             <span onClick={() => navigate('/')}>Home</span>
             <p>{product.title}</p>
 
-            <img src={product.productImgs?.[1]} alt="image" className='img-fluid' />
+            <img src={product.productImgs?.[1]} alt="productImg" className='img-fluid' />
             <h1>{product.title}</h1>
             <p>{product.description}</p>
 
