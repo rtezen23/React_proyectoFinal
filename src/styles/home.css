@@ -1,0 +1,14 @@
+.product-card-img{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    object-fit: contain;
+}
+
+.category-item{
+    cursor: pointer;
+}
+
+.category-item:hover{
+    background-color: #cacaca;
+}

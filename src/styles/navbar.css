@@ -1,0 +1,37 @@
+.navbar-main{
+    margin: 40px 0;
+    padding: 0 30px;
+}
+
+.nav-container{
+    
+}
+
+.navbar-brand{
+    font-weight: bold;
+    width: 50%;
+    font-size: 2rem !important;
+}
+
+.navbar-brand:hover{
+    color: #000 !important;
+}
+
+.me-auto{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5rem;
+}
+
+.me-auto>*{
+    font-size: 1.5rem;
+}
+
+.fa-solid{
+    color: #fff;
+}
+
+.fa-solid:hover{
+    color: #000;
+}
