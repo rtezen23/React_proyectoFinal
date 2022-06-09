@@ -11,7 +11,7 @@ import '../styles/productDetail.css'
 const ProductsDetail = () => {
 
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -39,9 +39,16 @@ const ProductsDetail = () => {
     dispatch(addToCart(purchase))
   }
 
-  console.log(product);
+  const addProduct = (id, e) => {
+    e.stopPropagation();
+     const product = {
+      id: id,
+      quantity: 1
+    }
+    dispatch(addToCart(product))
+  }
 
-  return (
+    return (
     <div>
       <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Home 🏠</span>
       <span className='product-title'>{product.title}</span>
@@ -61,7 +68,7 @@ const ProductsDetail = () => {
             <div className="product-quantity">
               <p>Quantity</p>
               <div className="quantity__number">
-                <button onClick={()=>setQuantity(quantity-1)}>-</button>
+                <button onClick={()=>quantity>1 && setQuantity(quantity-1)}>-</button>
                 <p className='quantity__value'>{quantity}</p>
                 <button onClick={()=>setQuantity(quantity+1)}>+</button>
               </div>
@@ -75,23 +82,26 @@ const ProductsDetail = () => {
 
       <Row xs={1} md={2} lg={3} className="g-4">
         {productsList.map(productItem => (
-          <Col>
-            <Card onClick={() => navigate(`/products/${productItem.id}`)} style={{ cursor: 'pointer' }}>
+          <Col key={productItem.id}>
+            <Card onClick={() => navigate(`/products/${productItem.id}`)} style={{ cursor: 'pointer' }} className='ec-card-container'>
               <Card.Img variant="top" src={productItem.productImgs[0]} className='product-card-img' />
               <Card.Body>
                 <Card.Title>{productItem.title}</Card.Title>
 
               </Card.Body>
-              <Card.Footer>
-                <p>Price</p>
+              <Card.Footer className='ec-card-footer'>
                 <Card.Text>
+                <p>Price</p>
                   {productItem.price}
                 </Card.Text>
+                <i class="fa-solid fa-cart-shopping add-to-cart-button" onClick={(e)=>addProduct(productItem.id,e)}></i>
               </Card.Footer>
             </Card>
           </Col>
         ))}
       </Row>
+
+      
     </div>
   );
 };

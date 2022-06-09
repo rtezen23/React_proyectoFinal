@@ -38,4 +38,18 @@ export const addToCart = product => (dispatch) => {
         .finally(() => dispatch(setIsLoading(false)));
 }
 
+export const deleteFromCart = id => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.delete(`https://ecommerce-api-react.herokuapp.com/api/v1/cart/${id}`, getConfig())
+        .then(() => {
+            dispatch(getCart());
+            alert('Product removed')
+        })
+        .catch(error=>{
+            console.log(error.response);
+            alert(error.response.data.message)
+        })
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
 export default cartSlice.reducer;

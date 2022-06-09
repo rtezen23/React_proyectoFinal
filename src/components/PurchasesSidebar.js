@@ -1,13 +1,16 @@
 import React from 'react';
 import { ListGroup, Offcanvas } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { deleteFromCart } from '../store/slices/cart.slice';
+import '../styles/purchasesSidebar.css';
 
 const PurchasesSidebar = ({show, handleClose}) => {
 
     const carts = useSelector(state=>state.cart);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const selectNews = cart => {
         handleClose();
@@ -21,6 +24,10 @@ const PurchasesSidebar = ({show, handleClose}) => {
             total += Number(cart.price * cart.productsInCart.quantity);
         });
         return total;
+    }
+
+    const deleteProduct = id => {
+        dispatch(deleteFromCart(id))
     }
 
     return (
@@ -38,6 +45,7 @@ const PurchasesSidebar = ({show, handleClose}) => {
                                     <p>Price: ${cart.price}</p>
                                     <p>Quantity: {cart.productsInCart.quantity}</p>
                                     <p>Total: ${cart.price * cart.productsInCart.quantity}</p>
+                                    <i className="fa-solid fa-circle-minus" onClick={()=>deleteProduct(cart.id)}></i>
                                 </ListGroup.Item>
                             )) }
 
