@@ -1,0 +1,42 @@
+.carousel-inner{
+    margin-bottom: 30px;
+}
+
+.carousel-inner>div img{
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    background-color: rgb(139, 3, 33);
+    border-radius: 20px;
+    border: 2px solid rgb(197, 172, 255);
+}
+
+.ec-carousel-navigate{
+    display: flex;
+    justify-content: space-around;
+}
+
+.img-navigate{
+    width: 120px;
+    aspect-ratio: 1;
+    cursor: pointer;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.img-navigate:hover{
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    filter: brightness(0.8);
+}
+
+.carousel-indicators>*{
+    display: none;
+}
+
+.ec-carousel-img{
+    aspect-ratio: 1.3 !important;
+}

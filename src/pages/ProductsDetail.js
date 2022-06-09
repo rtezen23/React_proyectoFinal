@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addToCart } from '../store/slices/cart.slice';
 import { filterCategories } from '../store/slices/products.slice';
+import ControlledCarousel from '../components/ControlledCarousel';
 import '../styles/productDetail.css'
 
 const ProductsDetail = () => {
@@ -38,13 +39,15 @@ const ProductsDetail = () => {
     dispatch(addToCart(purchase))
   }
 
+  console.log(product);
+
   return (
     <div>
       <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Home 🏠</span>
       <span className='product-title'>{product.title}</span>
       <section className="product-container">
         <div className="product-carrousel">
-          <img src={product.productImgs?.[1]} className='ec-carousel-img' alt="productImg"/>
+          <ControlledCarousel img={product.productImgs} />
         </div>
 
         <div className="product-info">

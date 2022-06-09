@@ -17,6 +17,10 @@ export const getCart = () => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())
         .then(res => dispatch(setCart(res.data.data.cart.products)))
+        .catch(error=>{
+            console.log(error.response);
+            alert(error.response.data.message)
+        })
         .finally(() => dispatch(setIsLoading(false)));
 }
 
@@ -29,7 +33,7 @@ export const addToCart = product => (dispatch) => {
         })
         .catch(error=>{
             console.log(error.response);
-            alert('Unexpected error')
+            alert(error.response.data.message)
         })
         .finally(() => dispatch(setIsLoading(false)));
 }

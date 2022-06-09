@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, FormControl, InputGroup, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../store/slices/cart.slice';
 
 import { filterCategories, filterProducts, getProducts } from '../store/slices/products.slice';
 import '../styles/home.css'
@@ -30,6 +31,15 @@ const Home = () => {
 
   const selectCategory = (id) => {
     dispatch(filterCategories(id))
+  }
+
+  const addProduct = (id, e) => {
+    e.stopPropagation();
+     const product = {
+      id: id,
+      quantity: 1
+    }
+    dispatch(addToCart(product))
   }
 
   return (
@@ -63,17 +73,18 @@ const Home = () => {
           <Row xs={1} md={2} lg={3} className="g-4">
             {products.map(product => (
               <Col key={product.id}>
-                <Card onClick={() => navigate(`/products/${product.id}`)} style={{ cursor: 'pointer' }}>
+                <Card onClick={() => navigate(`/products/${product.id}`)} style={{ cursor: 'pointer' }} className='ec-card-container'>
                   <Card.Img variant="top" src={product.productImgs[0]} className='product-card-img'/>
                   <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
                     
                   </Card.Body>
-                  <Card.Footer>
-                    <p>Price</p>
+                  <Card.Footer className='ec-card-footer'>
                     <Card.Text>
+                      <p>Price</p>
                       {product.price}
                     </Card.Text>
+                    <i class="fa-solid fa-cart-shopping add-to-cart-button" onClick={(e)=>addProduct(product.id,e)}></i>
                   </Card.Footer>
                 </Card>
               </Col>

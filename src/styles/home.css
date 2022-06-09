@@ -1,8 +1,14 @@
 .product-card-img{
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 150px;
+    max-height: 200px;
     margin: auto;
     object-fit: contain;
+}
+
+.ec-card-container{
+    padding-top: 20px;
+    height: 350px;
 }
 
 .category-item{
@@ -11,4 +17,22 @@
 
 .category-item:hover{
     background-color: #cacaca;
+}
+
+.ec-card-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-to-cart-button{
+    color: rgb(87, 151, 103);
+    background-color: rgb(208, 250, 208);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.add-to-cart-button:hover{
+    color: #000;
+    background-color: rgb(26, 158, 59);
 }

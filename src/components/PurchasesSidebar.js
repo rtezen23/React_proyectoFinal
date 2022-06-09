@@ -18,12 +18,10 @@ const PurchasesSidebar = ({show, handleClose}) => {
 
     const getTotal = () =>{
         carts.forEach(cart => {
-            total += Number(cart.price);
+            total += Number(cart.price * cart.productsInCart.quantity);
         });
         return total;
     }
-
-    console.log(carts);
 
     return (
         <div>
@@ -37,8 +35,9 @@ const PurchasesSidebar = ({show, handleClose}) => {
                             { carts.map(cart=>(
                                 <ListGroup.Item onClick={() => selectNews(cart)}>
                                     <h2>{cart.title}</h2>
-                                    <p>Price: {cart.price}</p>
+                                    <p>Price: ${cart.price}</p>
                                     <p>Quantity: {cart.productsInCart.quantity}</p>
+                                    <p>Total: ${cart.price * cart.productsInCart.quantity}</p>
                                 </ListGroup.Item>
                             )) }
 
