@@ -62,7 +62,7 @@ const Home = () => {
 
           <Row xs={1} md={2} lg={3} className="g-4">
             {products.map(product => (
-              <Col>
+              <Col key={product.id}>
                 <Card onClick={() => navigate(`/products/${product.id}`)} style={{ cursor: 'pointer' }}>
                   <Card.Img variant="top" src={product.productImgs[0]} className='product-card-img'/>
                   <Card.Body>

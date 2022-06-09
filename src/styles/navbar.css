@@ -1,5 +1,5 @@
 .navbar-main{
-    margin: 40px 0;
+    
     padding: 0 30px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .me-auto{
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     gap: 5rem;
@@ -34,4 +34,29 @@
 
 .fa-solid:hover{
     color: #000;
+}
+
+.icon-text{
+    display: none;
+    font-size: 1rem;
+}
+
+.fa-right-from-bracket{
+    color: #e55;
+}
+
+.fa-right-from-bracket:hover{
+    color: #f00;
+}
+
+
+@media screen and (max-width: 991px) {
+    .icon-text{
+        display: inline;
+        margin-left: 20px;
+    }
+
+    .me-auto{
+        gap: 0;
+    }
 }
