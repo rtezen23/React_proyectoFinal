@@ -91,10 +91,10 @@ const ProductsDetail = () => {
               </Card.Body>
               <Card.Footer className='ec-card-footer'>
                 <Card.Text>
-                <p>Price</p>
-                  {productItem.price}
+                Price: <span className='ec-card-footer__span'>$ {productItem.price}</span>
+                  
                 </Card.Text>
-                <i class="fa-solid fa-cart-shopping add-to-cart-button" onClick={(e)=>addProduct(productItem.id,e)}></i>
+                <i className="fa-solid fa-cart-shopping add-to-cart-button" onClick={(e)=>addProduct(productItem.id,e)}></i>
               </Card.Footer>
             </Card>
           </Col>

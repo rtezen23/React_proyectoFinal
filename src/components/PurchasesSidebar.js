@@ -2,7 +2,7 @@ import React from 'react';
 import { ListGroup, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteFromCart } from '../store/slices/cart.slice';
+import { addToPurchases, deleteFromCart } from '../store/slices/cart.slice';
 import '../styles/purchasesSidebar.css';
 
 const PurchasesSidebar = ({show, handleClose}) => {
@@ -34,22 +34,30 @@ const PurchasesSidebar = ({show, handleClose}) => {
         <div>
             <Offcanvas show={show} onHide={handleClose} placement='end'>
                 <Offcanvas.Header closeButton variant='dark'>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title>Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ListGroup variant="flush">
                         
                             { carts.map(cart=>(
-                                <ListGroup.Item onClick={() => selectNews(cart)}>
-                                    <h2>{cart.title}</h2>
-                                    <p>Price: ${cart.price}</p>
-                                    <p>Quantity: {cart.productsInCart.quantity}</p>
-                                    <p>Total: ${cart.price * cart.productsInCart.quantity}</p>
-                                    <i className="fa-solid fa-circle-minus" onClick={()=>deleteProduct(cart.id)}></i>
+                                <ListGroup.Item key={cart.id} onClick={() => selectNews(cart)}>
+                                    <div className="sidebar-cart__header">
+                                        <h2 className='sidebar-cart__title'>{cart.title}</h2>
+                                        <i className="fa-solid fa-circle-minus" onClick={()=>deleteProduct(cart.id)}></i>
+                                    </div>
+                                    <div className="sidebar-cart__body">
+                                        <p>Price: ${cart.price}</p>
+                                        <p className='sidebar-cart__quantity'>{cart.productsInCart.quantity}</p>
+                                    </div>
+                                    <div className="sidebar-cart__footer">
+                                        <p className='sidebar-cart__total-price'><span className='sidebar-cart__total'>Total: </span> ${cart.price * cart.productsInCart.quantity}</p>
+                                    </div>
                                 </ListGroup.Item>
                             )) }
 
                             <p>Total: {getTotal()}</p>
+
+                            <button onClick={()=>dispatch(addToPurchases())} className='sidebar-cart__checkout'>Checkout</button>
                         
                     </ListGroup>
                 </Offcanvas.Body>

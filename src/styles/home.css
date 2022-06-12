@@ -36,3 +36,8 @@
     color: #000;
     background-color: rgb(26, 158, 59);
 }
+
+.ec-card-footer-span{
+    display: block;
+    font-weight: bold;
+}

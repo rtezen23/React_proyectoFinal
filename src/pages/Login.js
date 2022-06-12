@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 const Login = () => {
 
@@ -16,18 +18,38 @@ const Login = () => {
             console.log(res.data);
             localStorage.setItem('token', res.data.data.token)
             navigate('/')
-            alert('Sesión iniciada correctamente');
+            alert('Succesfully logged in');
         })
         .catch(error => {
             console.log(error.response);
             if (error.response.status === 404 || error.response.status === 401) {
-                alert('Credenciales incorrectas');
+                alert('Wrong credentials');
             }
         })
         console.log(data);
     }
 
+    const popover = (
+        <Popover id="popover-basic">
+          <Popover.Header as="h3">Test data</Popover.Header>
+          <Popover.Body>
+            <p><b>Email:</b> test321@gmail.com</p>
+            <p> <strong>Password:</strong> 321test</p>
+          </Popover.Body>
+        </Popover>
+      );
+      
+      const Example = () => (
+        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <Button variant="success">Check test data</Button>
+        </OverlayTrigger>
+      );
+
     return (
+        <>
+        <Container>
+            <Example />
+        </Container>
         <div className='mt-5'>
             <Form onSubmit={handleSubmit(submit)} className='ec-email-form'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -47,6 +69,7 @@ const Login = () => {
                 </Button>
             </Form>
         </div>
+        </>
     );
 };
 

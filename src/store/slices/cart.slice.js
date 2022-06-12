@@ -19,7 +19,7 @@ export const getCart = () => (dispatch) => {
         .then(res => dispatch(setCart(res.data.data.cart.products)))
         .catch(error=>{
             console.log(error.response);
-            alert(error.response.data.message)
+            console.log(error.response.data.message)
         })
         .finally(() => dispatch(setIsLoading(false)));
 }
@@ -48,6 +48,17 @@ export const deleteFromCart = id => (dispatch) => {
         .catch(error=>{
             console.log(error.response);
             alert(error.response.data.message)
+        })
+        .finally(() => dispatch(setIsLoading(false)));
+}
+
+export const addToPurchases = () => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/purchases', {}, getConfig())
+        .then(() => {
+            dispatch(setCart([]));
+            dispatch(getCart());
+            alert('Products added to purchases');
         })
         .finally(() => dispatch(setIsLoading(false)));
 }

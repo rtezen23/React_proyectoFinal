@@ -81,10 +81,9 @@ const Home = () => {
                   </Card.Body>
                   <Card.Footer className='ec-card-footer'>
                     <Card.Text>
-                      <p>Price</p>
-                      {product.price}
+                      Price: <span className='ec-card-footer-span'>$ {product.price}</span>
                     </Card.Text>
-                    <i class="fa-solid fa-cart-shopping add-to-cart-button" onClick={(e)=>addProduct(product.id,e)}></i>
+                    <i className="fa-solid fa-cart-shopping add-to-cart-button" onClick={(e)=>addProduct(product.id,e)}></i>
                   </Card.Footer>
                 </Card>
               </Col>

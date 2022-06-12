@@ -7,3 +7,57 @@
 .fa-circle-minus:hover{
     color: rgb(250, 32, 32);
 }
+
+.sidebar-cart__header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-cart__title{
+    font-size: 1.2rem;
+    width: 70%;
+    font-weight: bold;
+}
+
+.sidebar-cart__body{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.sidebar-cart__footer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar-cart__quantity{
+    padding: 2px 8px;
+    border: 1px solid #cacaca;
+}
+
+.sidebar-cart__total{
+    font-size: .8rem;
+    color: #cacaca;
+    margin-right: 20px;
+    font-weight: normal;
+}
+
+.sidebar-cart__total-price{
+    font-weight: bold;
+}
+
+.sidebar-cart__checkout{
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    border: none;
+    background-color: #F85555;
+    color: #fafafa;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sidebar-cart__checkout:hover{
+    color: #fff;
+    background-color: #f00;
+}

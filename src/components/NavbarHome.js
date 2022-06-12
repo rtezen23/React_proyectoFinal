@@ -52,7 +52,7 @@ const NavbarHome = () => {
                 <i className="fa-solid fa-cart-shopping"> <span className='icon-text'>Show cart</span></i>
               </Nav.Link>
               <Nav.Link roles='button' onClick={logout}>
-              <i class="fa-solid fa-right-from-bracket"><span className='icon-text'>Log out</span></i>
+              <i className="fa-solid fa-right-from-bracket"><span className='icon-text'>Log out</span></i>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

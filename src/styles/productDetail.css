@@ -66,6 +66,12 @@
     max-height: 100%;
 }
 
+.ec-card-footer__span{
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 @media screen and (max-width: 768px){
     .product-container{
         flex-direction: column;
