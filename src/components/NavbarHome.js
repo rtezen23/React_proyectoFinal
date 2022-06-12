@@ -28,7 +28,7 @@ const NavbarHome = () => {
   const handleShow = () => {
 
     const token = localStorage.getItem('token');
-    if (token!=='') setShow(true)
+    if (token) setShow(true)
     else navigate('/login')
 
 };

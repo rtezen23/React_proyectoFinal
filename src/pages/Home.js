@@ -66,7 +66,7 @@ const Home = () => {
               value={search}
             />
             <Button onClick={searchProducts} variant="outline-success" id="button-addon2">
-              Button
+              Search
             </Button>
           </InputGroup>
 
