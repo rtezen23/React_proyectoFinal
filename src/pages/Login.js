@@ -12,63 +12,63 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const submit = data =>{
+    const submit = data => {
         axios.post(`https://ecommerce-api-react.herokuapp.com/api/v1/users/login`, data)
-        .then(res=> {
-            console.log(res.data);
-            localStorage.setItem('token', res.data.data.token)
-            navigate('/')
-            alert('Succesfully logged in');
-        })
-        .catch(error => {
-            console.log(error.response);
-            if (error.response.status === 404 || error.response.status === 401) {
-                alert('Wrong credentials');
-            }
-        })
+            .then(res => {
+                console.log(res.data);
+                localStorage.setItem('token', res.data.data.token)
+                navigate('/')
+                alert('Succesfully logged in');
+            })
+            .catch(error => {
+                console.log(error.response);
+                if (error.response.status === 404 || error.response.status === 401) {
+                    alert('Wrong credentials');
+                }
+            })
         console.log(data);
     }
 
     const popover = (
         <Popover id="popover-basic">
-          <Popover.Header as="h3">Test data</Popover.Header>
-          <Popover.Body>
-            <p><b>Email:</b> test321@gmail.com</p>
-            <p> <strong>Password:</strong> 321test</p>
-          </Popover.Body>
+            <Popover.Header as="h3">Test data</Popover.Header>
+            <Popover.Body>
+                <p><b>Email:</b> mason@gmail.com</p>
+                <p> <strong>Password:</strong> mason1234</p>
+            </Popover.Body>
         </Popover>
-      );
-      
-      const Example = () => (
+    );
+
+    const Example = () => (
         <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-          <Button variant="success">Check test data</Button>
+            <Button variant="success">Check test data</Button>
         </OverlayTrigger>
-      );
+    );
 
     return (
         <>
-        <Container>
-            <Example />
-        </Container>
-        <div className='mt-5'>
-            <Form onSubmit={handleSubmit(submit)} className='ec-email-form'>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control {...register('email')} type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+            <Container>
+                <Example />
+            </Container>
+            <div className='mt-5'>
+                <Form onSubmit={handleSubmit(submit)} className='ec-email-form'>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control {...register('email')} type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control {...register('password')} type="password" placeholder="Password" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-        </div>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control {...register('password')} type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         </>
     );
 };
