@@ -13,7 +13,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const submit = data => {
-        axios.post(`https://ecommerce-api-react.herokuapp.com/api/v1/users/login`, data)
+        axios.post(`https://e-commerce-api.academlo.tech/api/v1/users/login`, data)
             .then(res => {
                 console.log(res.data);
                 localStorage.setItem('token', res.data.data.token)
@@ -31,7 +31,7 @@ const Login = () => {
 
     const popover = (
         <Popover id="popover-basic">
-            <Popover.Header as="h3">Test data</Popover.Header>
+            <Popover.Header as="h3">Test data (Only for testing)</Popover.Header>
             <Popover.Body>
                 <p><b>Email:</b> mason@gmail.com</p>
                 <p> <strong>Password:</strong> mason1234</p>

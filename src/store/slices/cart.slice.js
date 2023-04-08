@@ -15,7 +15,7 @@ export const { setCart } = cartSlice.actions;
 
 export const getCart = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', getConfig())
+    return axios.get('https://e-commerce-api.academlo.tech/api/v1/cart', getConfig())
         .then(res => dispatch(setCart(res.data.data.cart.products)))
         .catch(error=>{
             console.log(error.response);
@@ -26,7 +26,7 @@ export const getCart = () => (dispatch) => {
 
 export const addToCart = product => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/cart', product, getConfig())
+    return axios.post('https://e-commerce-api.academlo.tech/api/v1/cart', product, getConfig())
         .then(() => {
             dispatch(getCart());
             alert('Product added')
@@ -40,7 +40,7 @@ export const addToCart = product => (dispatch) => {
 
 export const deleteFromCart = id => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.delete(`https://ecommerce-api-react.herokuapp.com/api/v1/cart/${id}`, getConfig())
+    return axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${id}`, getConfig())
         .then(() => {
             dispatch(getCart());
             alert('Product removed')
@@ -54,7 +54,7 @@ export const deleteFromCart = id => (dispatch) => {
 
 export const addToPurchases = () => (dispatch) => {
     dispatch(setIsLoading(true));
-    return axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/purchases', {}, getConfig())
+    return axios.post('https://e-commerce-api.academlo.tech/api/v1/purchases', {}, getConfig())
         .then(() => {
             dispatch(setCart([]));
             dispatch(getCart());
